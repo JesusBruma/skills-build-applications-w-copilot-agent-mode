@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
 
-const API_BASE = process.env.REACT_APP_CODESPACE_NAME
-  ? `https://${process.env.REACT_APP_CODESPACE_NAME}-8000.app.github.dev`
-  : 'http://localhost:8000';
+const API_URL = process.env.REACT_APP_CODESPACE_NAME
+  ? `https://${process.env.REACT_APP_CODESPACE_NAME}-8000.app.github.dev/api/users/`
+  : 'http://localhost:8000/api/users/';
 
 function Users() {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const url = `${API_BASE}/api/users/`;
+    const url = API_URL;
     console.log('Fetching users from:', url);
     fetch(url)
       .then(res => res.json())
